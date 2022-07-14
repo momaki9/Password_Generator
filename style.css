@@ -1,0 +1,13 @@
+*{
+    background-color: black;
+}
+
+img {
+    width: 1500px;
+    height: 600px;
+
+}
+
+body {
+    display:flex;
+}
