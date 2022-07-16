@@ -1,13 +1,30 @@
 *{
     background-color: black;
+    color: white;
+    font-family: monospace;
 }
 
 img {
-    width: 1500px;
-    height: 600px;
+    width: 80%;
+    height: 70%;
+    display: block;
+    margin-top: 10%;
+    margin-left: 10%;
 
 }
 
 body {
-    display:flex;
+    padding: 30px;
+    margin-bottom: 20px;
+    width: 90%;
+    text-align: center;
+}
+
+.return {
+    border: 1px solid white;
+    margin-top: 20px;
+}
+
+a:hover {
+    color: rgb(159, 180, 66);
 }
