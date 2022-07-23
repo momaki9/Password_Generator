@@ -19,7 +19,7 @@ function writePassword() {
 function generatePassword() {
   passwordText = "";
   chars = "";
-  var passwordLength = window.prompt("Enter the number of characters you would like for the Password. \n(Minimum of 8 are required. Max is 128.)");
+  var passwordLength = window.prompt("Enter the number of characters you would like for the Password. \n\n(Minimum of 8 are required. Max is 128)");
   if (passwordLength === null) {
     var passGenExit = window.confirm("Quit?");
     if (passGenExit) {
@@ -30,7 +30,7 @@ function generatePassword() {
     }
   }
   if (passwordLength < 8 || passwordLength > 128) {
-    window.alert("Please Enter a Number between 8 and 128");
+    window.alert("Not a vaild entry! Please enter a number between 8 and 128.");
     return generatePassword();
   }
   
@@ -60,7 +60,7 @@ function generatePassword() {
   }
 
   if (!charCapInclude && !charLowInclude && !charNumInclude && !charSymInclude) {
-    window.alert("Please try again and select at least one character type.")
+    window.alert("Please try again and be sure to select at least one character type.")
     return generatePassword();
   }
   
