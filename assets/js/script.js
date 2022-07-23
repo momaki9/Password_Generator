@@ -1,13 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var passwordContent = document.querySelector("#password");
 var charSym = "!@#$%^&*()";
 var charNum = "01234567890";
 var charCap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var charLow = "abcdefghijklmnopqrstuvwxyz";
 var chars = "";
 var passwordText = "";
-var passwordContent = document.querySelector("#password");
-
 
 // Write password to the #password input
 function writePassword() {
@@ -17,16 +16,27 @@ function writePassword() {
 }
 
 // generates password
-function generatePassword(passwordLength, charSymInclude, charNumInclude, charCapInclude, charLowInclude) {
+function generatePassword() {
   passwordText = "";
+  chars = "";
   var passwordLength = window.prompt("Enter the number of characters you would like for the Password. \n(Minimum of 8 are required. Max is 128.)");
-  
+  if (passwordLength === null) {
+    var passGenExit = window.confirm("Quit?");
+    if (passGenExit) {
+      return;
+    }
+    else {
+      return generatePassword();
+    }
+  }
   if (passwordLength < 8 || passwordLength > 128) {
+    window.alert("Please Enter a Number between 8 and 128");
     return generatePassword();
   }
-
-  if (!parseInt(passwordLength)) {
-    return;
+  
+  if (isNaN(passwordLength)) {
+    window.alert("Not a vaild entry!");
+    return generatePassword();
   }
    
   charSymInclude = window.confirm("OK to include symbols(i.e. % & ! $))? ")
@@ -49,7 +59,8 @@ function generatePassword(passwordLength, charSymInclude, charNumInclude, charCa
     chars = chars.concat(charLow);
   }
 
-  if (!charSymInclude && !charCapInclude && !charLowInclude && !charNumInclude) {
+  if (!charCapInclude && !charLowInclude && !charNumInclude && !charSymInclude) {
+    window.alert("Please try again and select at least one character type.")
     return generatePassword();
   }
   
@@ -57,6 +68,7 @@ function generatePassword(passwordLength, charSymInclude, charNumInclude, charCa
     var randomNumber = Math.floor(Math.random() * chars.length);
     passwordText += chars.substring(randomNumber, randomNumber +1);
     }
+  
 }
 
 // Add event listener to generate button
